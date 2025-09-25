@@ -41,15 +41,11 @@ terraform {
   }
 }
 
-# Docker provider
 provider "docker" {}
-
-# Pull Docker image
 resource "docker_image" "nginx" {
   name = "nginx:latest"
 }
 
-# Create Docker container
 resource "docker_container" "nginx_container" {
   name  = "nginx-container"
   image = docker_image.nginx.name
